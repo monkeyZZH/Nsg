@@ -1,0 +1,142 @@
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision a89f663e1f68026a4c11b0ce9fb51f419ab80773)
++++ app/build.gradle	(revision )
+@@ -26,4 +26,6 @@
+     })
+     compile 'com.android.support:appcompat-v7:25.3.1'
+     testCompile 'junit:junit:4.12'
++    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.0'
++    compile 'com.jakewharton:butterknife:8.8.0'
+ }
+Index: app/src/main/res/layout/load_xml.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/load_xml.xml	(revision )
++++ app/src/main/res/layout/load_xml.xml	(revision )
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="utf-8"?>
++<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:background="@drawable/bg_load"
++    >
++
++    <TextView
++        android:text="倒计时：3S"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:id="@+id/textView"
++        android:layout_alignParentTop="true"
++        android:layout_alignParentRight="true"
++        android:layout_alignParentEnd="true"
++        android:layout_marginRight="25dp"
++        android:layout_marginEnd="25dp"
++        android:layout_marginTop="33dp" />
++</RelativeLayout>
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision a89f663e1f68026a4c11b0ce9fb51f419ab80773)
++++ app/src/main/AndroidManifest.xml	(revision )
+@@ -8,13 +8,14 @@
+         android:label="@string/app_name"
+         android:supportsRtl="true"
+         android:theme="@style/AppTheme">
+-        <activity android:name=".MainActivity">
++        <activity android:name=".LoadActivity">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+ 
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+         </activity>
++        <activity android:name=".MainActivity"/>
+     </application>
+ 
+ </manifest>
+\ No newline at end of file
+Index: app/src/main/java/test/baway/com/nsg/LoadActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/test/baway/com/nsg/LoadActivity.java	(revision )
++++ app/src/main/java/test/baway/com/nsg/LoadActivity.java	(revision )
+@@ -0,0 +1,53 @@
++package test.baway.com.nsg;
++
++import android.content.Intent;
++import android.os.Bundle;
++import android.support.annotation.Nullable;
++import android.support.v7.app.AppCompatActivity;
++import android.widget.TextView;
++
++import java.util.Timer;
++import java.util.TimerTask;
++
++import butterknife.BindView;
++import butterknife.ButterKnife;
++
++/**
++ * name:周振辉
++ * 时间：2017/8/31 9:22
++ * 类描述：
++ */
++
++public class LoadActivity extends AppCompatActivity {
++    @BindView(R.id.textView)
++    TextView textView;
++
++    private int i = 3;
++    Timer timer = new Timer();
++
++    @Override
++    protected void onCreate(@Nullable Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.load_xml);
++        ButterKnife.bind(this);
++        timer.schedule(task, 1000, 1000);
++    }
++    TimerTask task = new TimerTask() {
++        @Override
++        public void run() {
++
++            runOnUiThread(new Runnable() {      // UI thread
++                @Override
++                public void run() {
++                    i--;
++                    textView.setText("倒计时："+i+"S");
++                    if(i == 0){
++                        Intent intent = new Intent(LoadActivity.this,MainActivity.class);
++                        startActivity(intent);
++                        finish();
++                    }
++                }
++            });
++        }
++    };
++}
+Index: app/src/main/res/values/styles.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/styles.xml	(revision a89f663e1f68026a4c11b0ce9fb51f419ab80773)
++++ app/src/main/res/values/styles.xml	(revision )
+@@ -1,7 +1,7 @@
+ <resources>
+ 
+     <!-- Base application theme. -->
+-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
++    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+         <!-- Customize your theme here. -->
+         <item name="colorPrimary">@color/colorPrimary</item>
+         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
