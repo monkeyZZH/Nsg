@@ -2,7 +2,51 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#366"
+    android:orientation="vertical"
     >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="horizontal"
+    android:background="#FF5001"
+    android:gravity="center"
+    >
+<ImageView
+    android:layout_width="30dp"
+    android:layout_height="30dp"
+    android:background="@drawable/ic_normal_code"
+    />
+
+    <TextView
+        android:layout_width="400dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="15dp"
+        android:background="#DD3000"
+        android:text="搜索一下"
+        android:drawableRight="@drawable/ic_normal_search"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:textColor="#fff"
+        />
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/ic_normal_message"
+        />
+
+</LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <ListView
+            android:id="@+id/left_list"
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"></ListView>
+    </LinearLayout>
+
 
 </LinearLayout>
