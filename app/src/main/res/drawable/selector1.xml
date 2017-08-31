@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--点击后展示的图片-->
+    <item android:state_checked="true" android:drawable="@drawable/ic_nav_home_press"></item>
+    <!--未点击展示图-->
+    <item android:state_checked="false"  android:drawable="@drawable/ic_nav_home"></item>
+</selector>
