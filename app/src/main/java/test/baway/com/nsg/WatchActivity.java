@@ -1,5 +1,6 @@
 package test.baway.com.nsg;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -58,7 +59,9 @@ public class WatchActivity extends AppCompatActivity {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Intent intent = new Intent(WatchActivity.this,DetailsActivity.class);
+                intent.putExtra("goods_id",list.get(position).getGoods_id());
+                startActivity(intent);
             }
         });
 

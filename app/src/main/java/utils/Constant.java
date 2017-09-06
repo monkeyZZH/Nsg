@@ -11,7 +11,11 @@ public class Constant {
     public static final String LINK_MOBILE = LINK_MAIN + "mobile/index.php?act=";
     public static final String LINK_MOBILE_CLASS = LINK_MOBILE + "goods_class";  //分类
     public static final String LINK_MOBILE_CLASS_XQ = LINK_MOBILE_CLASS + "&gc_id=";  //二级列表
-    public static final String LINK_MOBILE_SPLB = LINK_MOBILE + "goods&op=goods_list&page=100";  //二级列表
+    public static final String LINK_MOBILE_SPLB = LINK_MOBILE + "goods&op=goods_list&page=100";  //商品列表
+    public static final String LINK_MOBILE_SPXQ = LINK_MOBILE + "goods&op=goods_detail&goods_id=";  //商品详情
+    public static final String LINK_MOBILE_SPXQ_WEBVIEW = LINK_MOBILE + "goods&op=goods_body&goods_id=";  //商品详情webview
+
+
 
 
 

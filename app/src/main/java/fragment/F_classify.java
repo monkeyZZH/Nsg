@@ -47,7 +47,8 @@ public class F_classify extends Fragment{
     private static final String TAG = "Main";
     private List<String> r_list;
     private List<f_classify_right01.DatasBean.ClassListBean> r_list2;
-
+private List<f_classify_right02.DatasBean.ClassListBean> list3;
+    private  String[][] arr;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.f_classify_xml,container,false);
@@ -55,10 +56,7 @@ public class F_classify extends Fragment{
         mExpandableListView = (ExpandableListView) view.findViewById(R.id.expandableListView);
 
         zuo_okhttp();
-
-
         you(1);
-
         return view;
     }
 
@@ -90,19 +88,21 @@ public class F_classify extends Fragment{
                             @Override
                             public void run() {
                                 super.run();
-                                final String[][] arr = new String[r_list2.size()][];
+                                arr = new String[r_list2.size()][];
 
                                 for (int i = 0;i<r_list2.size();i++){
                                     String url = Constant.LINK_MOBILE_CLASS_XQ+r_list2.get(i).getGc_id();
                                     String aa = xutils.getUrlConnect(url);
                                     f_classify_right02 data2 = new Gson().fromJson(aa,f_classify_right02.class);
-                                    List<f_classify_right02.DatasBean.ClassListBean> list3 = new ArrayList<f_classify_right02.DatasBean.ClassListBean>();
+
+                                    list3 = new ArrayList<f_classify_right02.DatasBean.ClassListBean>();
                                     list3.addAll(data2.getDatas().getClass_list());
                                     String[] arr2 = new String[list3.size()];
                                     for (int a=0;a<list3.size();a++){
                                         arr2[a] = list3.get(a).getGc_name();
                                     }
                                     arr[i]=arr2;
+                                    arr2.clone();
                                 }
 
                                 getActivity().runOnUiThread(new Runnable() {
@@ -113,7 +113,9 @@ public class F_classify extends Fragment{
 //                                        for (int i = 0 ;i<list.size() ;i++){
 //                                            mExpandableListView.expandGroup(i);
 //                                        }
+
                                     }
+
                                 });
                             }
                         }.start();
@@ -127,6 +129,7 @@ public class F_classify extends Fragment{
                     public boolean onGroupClick(ExpandableListView parent,
                                                 View v, int groupPosition, long id) {
                         return false;
+
                     }
                 });
 
@@ -164,6 +167,10 @@ public class F_classify extends Fragment{
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                r_list2.clear();
+//                list3.clear();
+//                arr.clone();
+//                r_list.clear();
                 String a = list.get(position).getGc_id();
                 int b = Integer.parseInt(a);
                you(b);

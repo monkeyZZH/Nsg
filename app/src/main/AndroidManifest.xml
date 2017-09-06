@@ -19,6 +19,9 @@
         </activity>
         <activity android:name=".MainActivity"/>
         <activity android:name=".WatchActivity"></activity>
+        <activity android:name=".DetailsActivity"/>
+        <activity android:name="Details_TU_Activity"/>
+        <activity android:name=".Details_XQ_Activity"/>
     </application>
 
 </manifest>

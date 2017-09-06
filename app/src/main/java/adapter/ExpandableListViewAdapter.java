@@ -35,7 +35,8 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
     public String[][] gridViewChild ;
     String[][] child = { { "" }, { "" }, { "" }, { "" }, { "" }, { "" },
             { "" }, { "" } , { "" }, { "" }, { "" }, { "" }, { "" },
-        { "" }, { "" }};
+        { "" }, { "" }, { "" } , { "" }, { "" }, { "" }, { "" }, { "" },
+            { "" }, { "" }};
     LayoutInflater mInflater;
     Context context;
 
@@ -107,12 +108,14 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
 // 如果想要获取到哪一行，则自定义gridview的adapter，item设置2个textview一个隐藏设置id，显示哪一行
                     TextView tv = (TextView) view;
                     Toast.makeText(context,
-                            "position=" + position + "||" + tv.getText(),
+                             tv.getText(),
                             Toast.LENGTH_SHORT).show();
 
                     if(position==0&&tv.getText().equals("瑞士品牌")){
                         Intent intent = new Intent(context, WatchActivity.class);
+
                         context.startActivity(intent);
+
                     }
 
                     Log.e("hefeng", "gridView listaner position=" + position
@@ -184,9 +187,6 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         } else {
             mViewChild = (ViewChild) convertView.getTag();
         }
-
-
-
         mViewChild.textView.setText(getGroup(groupPosition).toString());
         return convertView;
     }
