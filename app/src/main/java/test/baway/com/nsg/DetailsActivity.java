@@ -7,11 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
@@ -19,7 +21,7 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
-import adapter.CartAdapter;
+import adapter.DetailsAdapter;
 import been.Data_cart;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -62,9 +64,11 @@ public class DetailsActivity extends AppCompatActivity {
     ScrollView scrollview;
     @BindView(R.id.spxq)
     TextView spxq;
+    @BindView(R.id.details_tianjia)
+    Button detailsTianjia;
 
     private List<Data_cart.DatasBean.GoodsCommendListBean> list;
-    private CartAdapter adapter;
+    private DetailsAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -87,8 +91,11 @@ public class DetailsActivity extends AppCompatActivity {
                 Data_cart data = new Gson().fromJson(str, Data_cart.class);
                 list = new ArrayList<Data_cart.DatasBean.GoodsCommendListBean>();
                 list.addAll(data.getDatas().getGoods_commend_list());
-                adapter = new CartAdapter(DetailsActivity.this, list);
+                adapter = new DetailsAdapter(DetailsActivity.this, list);
                 cartLv.setAdapter(adapter);
+                //添加购物车
+                tianjia(str);
+
                 //设置大图
                 Glide.with(DetailsActivity.this).load(data.getDatas().getGoods_image()).into(cartTu);
                 //设置名字
@@ -103,8 +110,8 @@ public class DetailsActivity extends AppCompatActivity {
                 cartLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent intent = new Intent(DetailsActivity.this,DetailsActivity.class);
-                        intent.putExtra("goods_id",list.get(position).getGoods_id());
+                        Intent intent = new Intent(DetailsActivity.this, DetailsActivity.class);
+                        intent.putExtra("goods_id", list.get(position).getGoods_id());
                         startActivity(intent);
                         finish();
                     }
@@ -142,6 +149,15 @@ public class DetailsActivity extends AppCompatActivity {
                 Intent intent = new Intent(DetailsActivity.this, Details_XQ_Activity.class);
                 intent.putExtra("url", url);
                 startActivity(intent);
+            }
+        });
+    }
+
+    public void tianjia(final String str) {
+        detailsTianjia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(DetailsActivity.this,"功能缺失",Toast.LENGTH_LONG).show();
             }
         });
     }

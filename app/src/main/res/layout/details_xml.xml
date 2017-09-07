@@ -71,6 +71,7 @@
             android:textSize="12sp"
             />
         <Button
+            android:id="@+id/details_tianjia"
             android:layout_width="0dp"
             android:background="#FF5001"
             android:layout_height="40dp"
@@ -87,7 +88,7 @@
             android:layout_height="40dp"
             android:textColor="#fff"
             android:drawableTop="@drawable/ic_collection_store"
-            android:text="购物车"
+            android:text="立即购买"
             android:textSize="12sp"
             />
 

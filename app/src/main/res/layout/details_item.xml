@@ -4,7 +4,7 @@
     android:orientation="horizontal"
     android:layout_height="match_parent">
     <ImageView
-        android:id="@+id/cart_itam_image"
+        android:id="@+id/details_itam_image"
         android:layout_width="100dp"
         android:layout_marginLeft="20dp"
         android:layout_height="100dp" />
@@ -13,7 +13,7 @@
         android:orientation="vertical"
         android:layout_height="100dp">
         <TextView
-            android:id="@+id/cart_itam_name"
+            android:id="@+id/details_itam_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="XXXXXXXXXXX"
@@ -21,7 +21,7 @@
             android:textSize="20sp"
             />
             <TextView
-                android:id="@+id/cart_itam_price"
+                android:id="@+id/details_itam_price"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:text="XXXXX"

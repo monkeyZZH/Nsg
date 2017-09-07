@@ -52,6 +52,7 @@ public class MainActivity extends FragmentActivity {
 
     }
 
+
     //下面就是四个按钮的点击事件
     public void SY(View v) {
         //展示fragment页
