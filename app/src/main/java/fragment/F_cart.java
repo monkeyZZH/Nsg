@@ -20,6 +20,8 @@ import utils.Constant;
 import utils.HttpUtil;
 import utils.OnNetListener;
 
+import static java.lang.Float.parseFloat;
+
 /**
  * name:周振辉
  * 时间：2017/8/31 14:24
@@ -60,7 +62,7 @@ private List<Data_cart.DatasBean.GoodsCommendListBean> list,list2;
                 listView.setAdapter(adapter);
                 //给控件设置初始值
                 for(int i = 0; i <list2.size();i++){
-                    price+=Float.parseFloat(list2.get(i).getGoods_promotion_price());
+                    price+= parseFloat(list2.get(i).getGoods_promotion_price());
                 }
                 sum = list2.size();
                 spzj.setText("共计"+sum+"件商品，共计"+price+"元");
@@ -72,6 +74,12 @@ private List<Data_cart.DatasBean.GoodsCommendListBean> list,list2;
         sum+=a;
         price+=b;
         spzj.setText("共计"+sum+"件商品，共计"+price+"元");
+    }
+    //自定义的方法，接收Adapter传过来的数据
+    public void setDelete(int a){
+       list2.remove(a);
+        adapter.notifyDataSetChanged();
+
     }
 
 }
