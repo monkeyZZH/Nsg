@@ -64,6 +64,7 @@ public class CartAdapter extends BaseAdapter {
                  holder.shu = (TextView)convertView.findViewById(R.id.cart_item_shushu);
                  holder.num = (TextView)convertView.findViewById(R.id.cart_item_numnum);
                  holder.DGZJ = (TextView)convertView.findViewById(R.id.cart_item_zongji1);
+                 holder.delete1 = (TextView)convertView.findViewById(R.id.cart_item_delete1);
                  convertView.setTag(holder);
              }else{
                  holder=(ViewHolder)convertView.getTag();
@@ -138,6 +139,29 @@ public class CartAdapter extends BaseAdapter {
                  }
              });
 
+             holder.delete1.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View v) {
+                     Toast.makeText(mContext,"点击删除",Toast.LENGTH_LONG).show();
+                     MainActivity fc = (MainActivity) mContext;
+                     List<Fragment> fragments = fc.getSupportFragmentManager().getFragments();
+                     for (Fragment f: fragments) {
+                         if (f instanceof F_cart){
+                             F_cart f_card = (F_cart) f;
+                             float b=Float.parseFloat(mList.get(position).getGoods_promotion_price());
+                             f_card.setData(-1, (int) -b);
+
+                                 f_card.setDelete(position);
+
+
+
+
+
+                         }
+                     }
+                 }
+             });
+
 
 
 
@@ -145,7 +169,7 @@ public class CartAdapter extends BaseAdapter {
          }
          class ViewHolder{
              Button jia,jian;
-                TextView name,price,shu,num,DGZJ;
+                TextView name,price,shu,num,DGZJ,delete1;
              ImageView image;
          }
 }
