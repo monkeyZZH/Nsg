@@ -6,7 +6,8 @@
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:background="#FF5001"
@@ -28,40 +29,205 @@
             android:textColor="#fff"
             />
     </LinearLayout>
-    <RelativeLayout
-
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="5dp"
-        android:background="#ffff"
+        android:layout_height="0dp"
+        android:layout_weight="12"
+        android:id="@+id/indent_scrollview"
+        android:layout_below="@id/cart_title"
+        android:layout_above="@id/cart_end"
+        android:fillViewport="true"
         >
-        <ImageView
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginLeft="18dp"
-            android:src="@drawable/ic_user_order_wait_receipt"
-            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:background="#ffff"
+                >
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginLeft="18dp"
+                    android:src="@drawable/ic_user_order_wait_receipt"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="收货地址"
+                    android:layout_marginLeft="48dp"
+                    android:textSize="15sp"
+                    android:gravity="center_vertical"
+                    />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_normal_dot_left"
+                    android:layout_alignParentRight="true"
+                    />
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/indent_dizhi_name"
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+            <TextView
+                android:id="@+id/indent_dizhi_city"
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="15dp"
+                android:background="#ffff"
+                >
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginLeft="18dp"
+                    android:src="@drawable/ic_user_order_wait_pay"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="支付方式"
+                    android:layout_marginLeft="48dp"
+                    android:textSize="15sp"
+                    android:gravity="center_vertical"
+                    />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_normal_dot_left"
+                    android:layout_alignParentRight="true"
+                    />
+            </RelativeLayout>
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="#ffff"
+                android:layout_height="50dp">
+                <RadioButton
+                    android:id="@+id/indent_zxzf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="在线支付"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="20sp"
+                    android:checked="true"
+                    android:button="@null"
+                   android:background="@drawable/cart_item"
+                    />
+                <RadioButton
+                    android:id="@+id/indent_hdfk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:button="@null"
+                    android:text="货到付款"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="20sp"
+                    android:background="@drawable/cart_item"
+                    />
+
+            </RadioGroup>
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="15dp"
+                android:background="#ffff"
+                >
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginLeft="18dp"
+                    android:src="@drawable/ic_user_property_red"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="支付方式"
+                    android:layout_marginLeft="48dp"
+                    android:textSize="15sp"
+                    android:gravity="center_vertical"
+                    />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_normal_dot_left"
+                    android:layout_alignParentRight="true"
+                    />
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="#ffff"
+                android:layout_height="50dp">
+                <TextView
+                    android:id="@+id/indent_buyao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="不索取发票"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="20sp"
+                    android:background="@drawable/cart_item"
+                    />
+                <TextView
+                    android:id="@+id/indent_yao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="索取发票"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="20sp"
+                    android:background="@drawable/cart_item"
+                    />
+
+            </LinearLayout>
+            <view.Cart_Listview
+                android:id="@+id/indent_lv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                ></view.Cart_Listview>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="收货地址"
-            android:layout_marginLeft="48dp"
-            android:textSize="15sp"
-            android:gravity="center_vertical"
+            android:id="@+id/indent_spzj"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="共0件商品，共计0元"
             />
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/ic_normal_dot_left"
-            android:layout_alignParentRight="true"
+        <Button
+            android:id="@+id/indent_jiesuan"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="去结算"
+            android:textColor="#ffff"
+            android:background="#FF5001"
             />
-    </RelativeLayout>
-    <TextView
-        android:id="@+id/indent_name"
-        android:layout_width="match_parent"
-        android:layout_height="30dp" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp" />
+    </LinearLayout>
+
+
 </LinearLayout>

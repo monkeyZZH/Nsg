@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="cheng">#FF5001</color>
     <color name="hui">#9C9FA3</color>
+    <color name="software_textColor_selected">#FF5001</color>
+    <color name="software_textColor_unselected">#fff</color>
 </resources>

@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import been.Data_cart;
+import Dao.User;
 import test.baway.com.nsg.R;
 
 /**
@@ -20,12 +20,12 @@ import test.baway.com.nsg.R;
  * 类描述：
  */
 
-public class DetailsAdapter extends BaseAdapter {
+public class IndentAdapter extends BaseAdapter {
     private Context mContext;
-    private List<Data_cart.DatasBean.GoodsCommendListBean> mList;
+    private List<User> mList;
     private int count = 1;
 
-    public DetailsAdapter(Context context, List<Data_cart.DatasBean.GoodsCommendListBean> list) {
+    public IndentAdapter(Context context, List<User> list) {
         mContext = context;
         mList = list;
     }
@@ -49,11 +49,11 @@ public class DetailsAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder=null;
         if(convertView==null){
-            convertView=View.inflate(mContext, R.layout.details_item,null);
+            convertView=View.inflate(mContext, R.layout.indent_item,null);
             holder=new ViewHolder();
-            holder.name = (TextView) convertView.findViewById(R.id.details_itam_name);
-            holder.price = (TextView)convertView.findViewById(R.id.details_itam_price);
-            holder.image = (ImageView)convertView.findViewById(R.id.details_itam_image);
+            holder.name = (TextView) convertView.findViewById(R.id.indent_itam_name);
+            holder.price = (TextView)convertView.findViewById(R.id.indent_itam_price);
+            holder.image = (ImageView)convertView.findViewById(R.id.indent_itam_image);
 
 
 
@@ -61,9 +61,9 @@ public class DetailsAdapter extends BaseAdapter {
         }else{
             holder=(ViewHolder)convertView.getTag();
         }
-        holder.name.setText(mList.get(position).getGoods_name());
-        holder.price.setText("¥:"+mList.get(position).getGoods_promotion_price());
-        Glide.with(mContext).load(mList.get(position).getGoods_image_url()).into(holder.image);
+        holder.name.setText(mList.get(position).getName());
+        holder.price.setText("¥:"+mList.get(position).getPrice());
+        Glide.with(mContext).load(mList.get(position).getUrl()).into(holder.image);
 
         return convertView;
     }

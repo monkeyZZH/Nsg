@@ -57,6 +57,7 @@ android:orientation="vertical"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="去结算"
+            android:onClick="JS"
             android:textColor="#ffff"
             android:background="#FF5001"
             />

@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
+import Dao.User;
 import adapter.DetailsAdapter;
 import been.Data_cart;
 import butterknife.BindView;
@@ -157,7 +158,16 @@ public class DetailsActivity extends AppCompatActivity {
         detailsTianjia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(DetailsActivity.this,"功能缺失",Toast.LENGTH_LONG).show();
+                Data_cart data = new Gson().fromJson(str, Data_cart.class);
+                List<User> list = Dao.LoveDao.queryAll();
+                User user = new User();
+                user.setId((long) (list.size()+1));
+                user.setName(data.getDatas().getGoods_info().getGoods_name());
+                user.setUrl(data.getDatas().getGoods_image());
+                user.setPrice(data.getDatas().getGoods_info().getGoods_price());
+                user.setNum(1);
+                Dao.LoveDao.insertLove(user);
+                Toast.makeText(DetailsActivity.this,"添加成功",Toast.LENGTH_LONG).show();
             }
         });
     }

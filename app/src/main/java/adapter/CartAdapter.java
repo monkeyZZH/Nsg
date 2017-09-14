@@ -2,6 +2,7 @@ package adapter;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -14,7 +15,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import been.Data_cart;
+import Dao.User;
 import fragment.F_cart;
 import test.baway.com.nsg.MainActivity;
 import test.baway.com.nsg.R;
@@ -27,9 +28,9 @@ import test.baway.com.nsg.R;
 
 public class CartAdapter extends BaseAdapter {
      private Context mContext;
-         private List<Data_cart.DatasBean.GoodsCommendListBean> mList;
+         private List<User> mList;
         private int aa = 1;
-         public CartAdapter(Context context, List<Data_cart.DatasBean.GoodsCommendListBean> list) {
+         public CartAdapter(Context context, List<User> list) {
              mContext = context;
              mList = list;
          }
@@ -69,10 +70,11 @@ public class CartAdapter extends BaseAdapter {
              }else{
                  holder=(ViewHolder)convertView.getTag();
              }
-                 holder.name.setText(mList.get(position).getGoods_name());
-                 holder.price.setText(mList.get(position).getGoods_promotion_price());
-             Glide.with(mContext).load(mList.get(position).getGoods_image_url()).into(holder.image);
-             holder.DGZJ.setText("共計1件商品，共計"+mList.get(position).getGoods_promotion_price()+"元");
+                 holder.name.setText(mList.get(position).getName());
+                 holder.price.setText(mList.get(position).getPrice());
+             Glide.with(mContext).load(mList.get(position).getUrl()).into(holder.image);
+             Log.e("Url",mList.get(position).getUrl());
+             holder.DGZJ.setText("共計1件商品，共計"+mList.get(position).getPrice()+"元");
              final ViewHolder finalHolder = holder;
              final ViewHolder finalHolder1 = holder;
              final ViewHolder finalHolder2 = holder;
@@ -89,7 +91,7 @@ public class CartAdapter extends BaseAdapter {
                      finalHolder.shu.setText(""+count);
                      finalHolder1.num.setText("X"+count);
                      //计算当前数量商品的总价
-                     float b=Float.parseFloat(mList.get(position).getGoods_promotion_price());
+                     float b=Float.parseFloat(mList.get(position).getPrice());
                      float c = b*count;
                      //设置商品总价
                      finalHolder2.DGZJ.setText("共计"+count+"件商品，共计"+c+"元");
@@ -108,6 +110,7 @@ public class CartAdapter extends BaseAdapter {
                              f_card.setData(1, (int) b);
                          }
                      }
+
                  }
              });
 
@@ -120,7 +123,7 @@ public class CartAdapter extends BaseAdapter {
                          --count;
                          finalHolder.shu.setText(""+count);
                          finalHolder1.num.setText("X"+count);
-                         float b=Float.parseFloat(mList.get(position).getGoods_promotion_price());
+                         float b=Float.parseFloat(mList.get(position).getPrice());
                          float c = b*count;
                          finalHolder2.DGZJ.setText("共计"+count+"件商品，共计"+c+"元");
 
@@ -148,7 +151,7 @@ public class CartAdapter extends BaseAdapter {
                      for (Fragment f: fragments) {
                          if (f instanceof F_cart){
                              F_cart f_card = (F_cart) f;
-                             float b=Float.parseFloat(mList.get(position).getGoods_promotion_price());
+                             float b=Float.parseFloat(mList.get(position).getPrice());
                              f_card.setData(-1, (int) -b);
 
                                  f_card.setDelete(position);
