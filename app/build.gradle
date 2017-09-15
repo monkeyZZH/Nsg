@@ -38,4 +38,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'com.zhy:okhttputils:2.0.0'
     compile 'org.greenrobot:greendao:3.2.2' // add library
+
+    compile 'me.dm7.barcodescanner:zxing:1.8.4'
 }

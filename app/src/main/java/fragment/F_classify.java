@@ -1,5 +1,6 @@
 package fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -23,6 +25,7 @@ import adapter.f_classify_left_adapter;
 import been.Data_classify;
 import been.f_classify_right01;
 import been.f_classify_right02;
+import test.baway.com.nsg.Ewm_Activity;
 import test.baway.com.nsg.R;
 import utils.Constant;
 import utils.HttpUtil;
@@ -49,16 +52,40 @@ public class F_classify extends Fragment{
     private List<f_classify_right01.DatasBean.ClassListBean> r_list2;
 private List<f_classify_right02.DatasBean.ClassListBean> list3;
     private  String[][] arr;
+    private ImageView imageView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.f_classify_xml,container,false);
         listView = (ListView) view.findViewById(R.id.left_list);
         mExpandableListView = (ExpandableListView) view.findViewById(R.id.expandableListView);
+        imageView = (ImageView)view.findViewById(R.id.EWM);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Ewm_Activity.class);
+                startActivity(intent);
+            }
+        });
+
 
         zuo_okhttp();
         you(1);
         return view;
     }
+
+
+
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (resultCode == RESULT_OK){
+//            Intent intent = new Intent(getActivity(),Ewm_Activity.class);
+//            intent.putExtra("key",data.getStringExtra("text"));
+//            startActivity(intent);
+//
+//        }
+//    }
 
     private void you(int a) {
         r_list = new ArrayList<>();
