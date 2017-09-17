@@ -14,6 +14,8 @@ import com.speedystone.greendaodemo.db.DaoSession;
 
 public class BaseApplication extends Application{
     private static DaoSession daoSession;
+    private static BaseApplication sApp;
+
 
     @Override
     public void onCreate() {
@@ -39,4 +41,5 @@ public class BaseApplication extends Application{
     public static DaoSession getDaoInstant() {
         return daoSession;
     }
+
 }

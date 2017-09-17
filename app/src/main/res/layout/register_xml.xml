@@ -28,7 +28,7 @@
             />
     </LinearLayout>
     <EditText
-
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -36,10 +36,10 @@
         android:layout_marginRight="10dp"
         android:drawablePadding="8dp"
         android:drawableLeft="@drawable/ic_edit_username"
-        android:hint="手机"
+        android:hint="账号"
         />
     <EditText
-
+        android:id="@+id/paw"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -50,7 +50,7 @@
         android:hint="密码"
         />
     <EditText
-
+        android:id="@+id/paw2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -61,7 +61,7 @@
         android:hint="确认密码"
         />
     <EditText
-
+        android:id="@+id/youxiang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -74,10 +74,11 @@
 
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/registr"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:text="登陆"
+        android:text="注册"
+        android:onClick="ZC"
         android:layout_marginTop="15dp"
         android:textSize="25dp"
         android:background="#FF5001"

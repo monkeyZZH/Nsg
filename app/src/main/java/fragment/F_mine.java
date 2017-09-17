@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import test.baway.com.nsg.AddressActivity;
 import test.baway.com.nsg.LogonActivity;
 import test.baway.com.nsg.R;
 
@@ -19,18 +20,45 @@ import test.baway.com.nsg.R;
 
 public class F_mine extends Fragment{
     private TextView mine_name;
+    private TextView address;
+    private  LogonActivity activity = new LogonActivity();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.f_mine_xml,container,false);
         mine_name = (TextView)view.findViewById(R.id.mine_name);
-        mine_name.setOnClickListener(new View.OnClickListener() {
+        address = (TextView)view.findViewById(R.id.address);
+        address.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), LogonActivity.class);
+                Intent intent = new Intent(getActivity(), AddressActivity.class);
                 startActivity(intent);
             }
         });
+
+
+        mine_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                Intent intent = new Intent(getActivity(), LogonActivity.class);
+//                startActivity(intent);
+
+
+                Intent mIntent = new Intent();
+                mIntent.setClass(getActivity(),
+                        LogonActivity.class);
+                startActivityForResult(mIntent, 0);
+            }
+        });
+
         return view;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        String a = data.getStringExtra("name");
+        mine_name.setText(a);
     }
 
 }
